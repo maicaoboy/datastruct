@@ -11,9 +11,13 @@ int main() {
     int randomArray[] = {3,8,1,56,1,4,8,34,1};
     int increaseArray[] = {1,1,5,7,7,8,8,9,10};
     int increaseArrayBig[] = {2,3,4,7,7,9,12,19,100};
+    int array1[] = {2,3,5,7,9,10,13,14,15};
+    int array2[] = {1,2,3,4,5,7,12,13,118};
     int length = 9;
     int len;
     int ith = 0;
+    int min = 0;
+    int max = 0;
     LinkNode *node = NULL;
     LinkList L;
     LinkList L1;
@@ -47,7 +51,7 @@ int main() {
 
     printf("\n*************** 测试3-1 *********************\n");
     create_TailInsert(L, randomArray, length);
-    int max = MaxOne(L->next);
+    max = MaxOne(L->next);
     printf("最大的是: %d\n", max);
     freeLinkList(L);
 
@@ -229,7 +233,118 @@ int main() {
     freeLinkList(L1);
     freeLinkList(L2);
 
+
+
+    /**
+     * 测试例题12
+     */
+    printf("\n*************** 测试12 *********************\n");
+    create_TailInsert(L, array, length);
+    printf("删除前链表Lc:");
+    printLinkList(L);
+    printf("\n");
+
+    create_TailInsert(L1, array1, length);
+    printf("删除前链表La:");
+    printLinkList(L1);
+    printf("\n");
+
+    create_TailInsert(L2, array2, length);
+    printf("删除前链表Lb:");
+    printLinkList(L2);
+    printf("\n");
+
+    removeRepeatInLaLb(L1, L2, L);
+
+    printf("删除后链表Lc:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L1);
+    freeLinkList(L2);
+    freeLinkList(L);
+
+
+    /**
+     * 测试例题12-1
+     */
+    printf("\n*************** 测试12-1 *********************\n");
+    create_TailInsert(L, array, length);
+    printf("删除前链表Lc:");
+    printLinkList(L);
+    printf("\n");
+
+    create_TailInsert(L1, array1, length);
+    printf("删除前链表La:");
+    printLinkList(L1);
+    printf("\n");
+
+    create_TailInsert(L2, array2, length);
+    printf("删除前链表Lb:");
+    printLinkList(L2);
+    printf("\n");
+
+    removeRepeatInLaLb(L1, L2, L);
+
+    printf("删除后链表Lc:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L1);
+    freeLinkList(L2);
+    freeLinkList(L);
+
+
+
+    /**
+     * 测试例题13
+     */
+    printf("\n*************** 测试13 *********************\n");
+    create_TailInsert(L1, array1, length);
+    printf("La:");
+    printLinkList(L1);
+    printf("\n");
+
+    create_TailInsert(L2, array2, length);
+    printf("Lb:");
+    printLinkList(L2);
+    printf("\n");
+
+
+    merge(L, L1, L2);
+
+    printf("合并后链表Lc:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L1);
+    freeLinkList(L2);
+    freeLinkList(L);
+
+
+
+
+    printf("\n*************** 测试14 *********************\n");
+    create_TailInsert(L, increaseArray, length);
+    printf("L:");
+    printLinkList(L);
+    printf("\n");
+
+    min = 3;
+    max = 8;
+
+    deleteBetweenMinMax(L, min, max);
+
+    printf("删除(%d, %d)之间元素后链表Lc:", min, max);
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L);
+
 }
+
+
+
 
 
 

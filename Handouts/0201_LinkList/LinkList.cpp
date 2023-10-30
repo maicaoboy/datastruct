@@ -344,6 +344,181 @@ void removeRepeatInBoth(LinkList La, LinkList Lb) {
 
 
 
+void repeat(LinkList &L, LinkList La, LinkList Lb) {
+    LinkNode *ptrA = La->next;
+    LinkNode *ptrB = Lb->next;
+    L = (LinkNode*)(malloc(sizeof(LinkNode)));
+    L->next = NULL;
+    L->data = -1;
+    LinkNode *tail = L;
+
+
+    while(ptrA && ptrB) {
+        if(ptrA->data < ptrB->data) {
+            ptrA = ptrA->next;
+        }else if(ptrA->data > ptrB->data) {
+            ptrB = ptrB->next;
+        }else {
+            LinkNode *node = getLinkNode(ptrA->data);
+            tail->next = node;
+            tail = node;
+            ptrA = ptrA->next;
+            ptrB = ptrB->next;
+        }
+    }
+}
+
+
+/**
+ * 例题12 我的版本 (空间复杂度高)
+ * 已知La,Lb,Lc是三个链表,且它们已经初始化,其元素按递增顺序排序,每个表中均无重复元素,设计算表在表Lc中删除同时出现在La和Lb中的所有元素
+ * @param La
+ * @param Lb
+ * @param Lc
+ */
+void removeRepeatInLaLb(LinkList La, LinkList Lb, LinkList Lc) {
+    LinkList L;
+    repeat(L, La, Lb);
+    LinkNode *pre = Lc;
+    LinkNode *cur = Lc->next;
+    LinkNode *same = L->next;
+
+
+
+    while(same && cur) {
+        if(cur->data < same->data) {
+            pre = cur;
+            cur = cur->next;
+        }else if(cur->data > same->data) {
+            same = same->next;
+        }else {
+            pre->next = cur->next;
+            free(cur);
+            cur = pre->next;
+        }
+    }
+
+    freeLinkList(L);
+}
+
+
+
+void deleteBetween(LinkNode *&pre, LinkNode *&cur, int e) {
+    while(cur != NULL && cur -> data < e) {
+        pre = cur;
+        cur = cur->next;
+    }
+    if(cur->data == e) {
+        pre = cur->next;
+        free(cur);
+        cur = pre->next;
+    }
+}
+
+/**
+ * 例题12 高效版本
+ * 已知La,Lb,Lc是三个链表,且它们已经初始化,其元素按递增顺序排序,每个表中均无重复元素,设计算表在表Lc中删除同时出现在La和Lb中的所有元素
+ * !!!每次找出相同元素即从上次删除位置开始继续删除
+ * @param La
+ * @param Lb
+ * @param Lc
+ */
+void removeRepeatInLaLb_Good(LinkList La, LinkList Lb, LinkList Lc) {
+    LinkNode *pa = La->next;
+    LinkNode *pb = Lb->next;
+    LinkNode *pre = Lc;
+    LinkNode *cur = Lc->next;
+
+    while(pa && pb && cur) {
+        if(pa->data < pb->data) {
+            pa = pa->next;
+        }else if(pa->data > pb->data){
+            pb = pb->next;
+        }else {
+            deleteBetween(pre, cur, pa->data);
+        }
+    }
+}
+
+
+void tailInsert(LinkNode *&tail, LinkNode *node) {
+    if(tail->data == node->data) {
+        free(node);
+    }else {
+        tail->next = node;
+        tail = node;
+        tail->next = NULL;
+    }
+}
+
+
+/**
+ * La和Lb按值非递减,归并La和Lb,得到新的链表Lc,是的Lc也按值非递减且不含重复元素
+ * !!!合并后要处理末尾元素
+ * @param L         合并后的新表
+ * @param La
+ * @param Lb
+ */
+void merge(LinkList &L, LinkList La, LinkList Lb) {
+    LinkNode *ptrA = La->next;
+    LinkNode *ptrB = Lb->next;
+    L = (LinkNode*)(malloc(sizeof(LinkNode)));
+    L->next = NULL;
+    L->data = -1;
+    LinkNode *tail = L;
+
+
+    while(ptrA && ptrB) {
+        if(ptrA->data < ptrB->data) {
+            LinkNode *node = ptrA;
+            ptrA = ptrA->next;
+            tailInsert(tail, node);
+        }else{//在插入函数进行去重操作和重复结点释放
+            LinkNode *node = ptrB;
+            ptrB = ptrB->next;
+            tailInsert(tail, node);
+        }
+    }
+
+    while(ptrA) {
+        LinkNode *node = ptrA;
+        ptrA = ptrA->next;
+        tailInsert(tail, node);
+    }
+
+    while(ptrB) {
+        LinkNode *node = ptrB;
+        ptrB = ptrB->next;
+        tailInsert(tail, node);
+    }
+}
+
+
+
+/**
+ * 带头节点单链表中所有元素的数据按递增序列排序,删除链表中大于min且小于max的元素
+ * @param L
+ * @param min
+ * @param max
+ */
+void deleteBetweenMinMax(LinkList L, int min, int max) {
+    LinkNode *pre = L;
+    LinkNode *cur = L->next;
+
+    while(cur) {
+        if(cur->data > min && cur->data < max) {
+            pre->next = cur->next;
+            free(cur);
+            cur = pre->next;
+        }else {
+            pre = cur;
+            cur = cur->next;
+        }
+    }
+
+}
+
+
 
 
 
