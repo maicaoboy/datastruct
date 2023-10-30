@@ -1,0 +1,3 @@
+add_subdirectory(0101_SequenceList)
+add_subdirectory(0201_LinkList)
+add_subdirectory(0202_LinkListChar)

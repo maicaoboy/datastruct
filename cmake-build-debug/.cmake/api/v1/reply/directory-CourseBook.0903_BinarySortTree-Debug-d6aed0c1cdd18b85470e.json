@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "CourseBook/0903_BinarySortTree",
+		"source" : "CourseBook/0903_BinarySortTree"
+	}
+}

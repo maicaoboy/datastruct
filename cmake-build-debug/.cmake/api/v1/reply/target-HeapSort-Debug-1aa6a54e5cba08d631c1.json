@@ -1,0 +1,127 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "CourseBook/1006_HeapSort/HeapSort.exe"
+		},
+		{
+			"path" : "CourseBook/1006_HeapSort/HeapSort.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CourseBook/1006_HeapSort/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion/Status"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Scanf_lib::@fe314c4577536ad9eb12"
+		}
+	],
+	"id" : "HeapSort::@d8e7aaa3a4006e951a52",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,--enable-auto-import",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Status/libScanf_lib.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "HeapSort",
+	"nameOnDisk" : "HeapSort.exe",
+	"paths" : 
+	{
+		"build" : "CourseBook/1006_HeapSort",
+		"source" : "CourseBook/1006_HeapSort"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "CourseBook/1006_HeapSort/HeapSort.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

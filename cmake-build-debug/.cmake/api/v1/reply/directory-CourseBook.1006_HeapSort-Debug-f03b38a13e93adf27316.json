@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "CourseBook/1006_HeapSort",
+		"source" : "CourseBook/1006_HeapSort"
+	}
+}

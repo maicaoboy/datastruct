@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "CourseBook/1005_SimpleSelectSort",
+		"source" : "CourseBook/1005_SimpleSelectSort"
+	}
+}

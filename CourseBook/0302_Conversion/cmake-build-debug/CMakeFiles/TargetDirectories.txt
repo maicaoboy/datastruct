@@ -1,0 +1,3 @@
+/cygdrive/d/Clion/855MyVersion/CourseBook/0302_Conversion/cmake-build-debug/CMakeFiles/Conversion.dir
+/cygdrive/d/Clion/855MyVersion/CourseBook/0302_Conversion/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/d/Clion/855MyVersion/CourseBook/0302_Conversion/cmake-build-debug/CMakeFiles/rebuild_cache.dir

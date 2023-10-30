@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "CourseBook/0901_SequentialSearch",
+		"source" : "CourseBook/0901_SequentialSearch"
+	}
+}
