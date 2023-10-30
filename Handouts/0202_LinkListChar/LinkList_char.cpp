@@ -132,12 +132,12 @@ int isSame(LinkList L, int n) {
     LinkNode *slow = L->next;
     LinkNode *fast = L->next;
 
-    while(i < n / 2) {
+    while(i < n / 2 && fast != NULL) {
         i++;
         fast = fast->next;
     }
 
-    if(n % 2) {
+    if(n % 2 && fast != NULL) {
         fast = fast->next;
     }
 
@@ -145,10 +145,16 @@ int isSame(LinkList L, int n) {
         if(slow->data != fast->data) {
             return 0;
         }
+        slow = slow->next;
+        fast = fast->next;
     }
 
     return 1;
 }
+
+
+
+
 
 
 

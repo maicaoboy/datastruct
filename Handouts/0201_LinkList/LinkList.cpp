@@ -268,10 +268,78 @@ void deleteAndMerge(LinkList &L1, LinkList &L2, int j, int len){
 
 
 
+/**
+ * 例题9:从非递减有序的单链表中删除值相同的多余元素
+ * 假设带头结点
+ * @param L
+ */
+void removeRepeat(LinkList L) {
+    LinkNode *pre = L->next;
+    LinkNode *cur = pre->next;
+
+    while(cur) {
+        if(pre->data == cur->data) {
+            LinkNode *node = cur;
+            pre->next = cur->next;
+            cur = cur->next;
+            free(node);
+        }else {
+            pre = cur;
+            cur = cur->next;
+        }
+    }
+}
+
+/**
+ * 例题10:设有一个非递减的正整数单链表(有重复数),设计算法确定比x小的结点数量
+ * @param L
+ * @param x
+ * @return          比x小的数个数
+ */
+int countLessThanX(LinkList L, int x) {
+    LinkNode *pre = L->next;
+    LinkNode *cur = pre->next;
+    int cnt = 0;
+
+    while(cur) {
+        if(pre->data < x) {
+            if(pre->data != cur->data) {
+                cnt++;
+            }
+            pre = cur;
+            cur = cur->next;
+        }else {
+            break;
+        }
+    }
+    return cnt;
+}
 
 
 
+/**
+ * 例题11: 删除非递减单链表La中La与Lb相同的元素
+ * @param La
+ * @param Lb
+ */
+void removeRepeatInBoth(LinkList La, LinkList Lb) {
+    LinkNode *pa = La->next;
+    LinkNode *pre = La;
+    LinkNode *pb = Lb->next;
 
+    while(pa && pb) {
+        if(pa->data < pb->data) {
+            pre = pa;
+            pa = pa->next;
+        }else if(pa->data > pb->data) {
+            pb = pb->next;
+        }else {
+            pre->next = pa->next;
+            free(pa);
+            pa = pre->next;
+        }
+    }
+}
 
 
 

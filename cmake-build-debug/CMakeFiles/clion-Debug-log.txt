@@ -1,4 +1,16 @@
 C:\Users\lhb\AppData\Local\JetBrains\CLion2023.2\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/cygdrive/c/Users/lhb/AppData/Local/Programs/CLion/bin/ninja/cygwin/x64/ninja.exe -G Ninja -S /cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion -B /cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion/cmake-build-debug
--- Configuring done (0.4s)
--- Generating done (1.6s)
--- Build files have been written to: /cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion/cmake-build-debug
+-- Configuring done (0.5s)
+CMake Error at Handouts/0202_LinkListChar/CMakeLists.txt:5 (add_executable):
+  Cannot find source file:
+
+    LinkList_main_char.cpp.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+
+
+CMake Error at Handouts/0202_LinkListChar/CMakeLists.txt:5 (add_executable):
+  No SOURCES given to target: LinkList_char_M
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

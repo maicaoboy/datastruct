@@ -9,6 +9,8 @@
 int main() {
     int array[] = {1,2,3,4,5,6,7,8,9};
     int randomArray[] = {3,8,1,56,1,4,8,34,1};
+    int increaseArray[] = {1,1,5,7,7,8,8,9,10};
+    int increaseArrayBig[] = {2,3,4,7,7,9,12,19,100};
     int length = 9;
     int len;
     int ith = 0;
@@ -163,6 +165,70 @@ int main() {
 
     freeLinkList(L1);
     freeLinkList(L2);
+
+
+    /**
+     * 测试例题9
+     */
+    printf("\n*************** 测试9 *********************\n");
+    create_TailInsert(L, increaseArray, length);
+    printf("删除前链表L:");
+    printLinkList(L);
+    printf("\n");
+
+    removeRepeat(L);
+
+    printf("删除后链表L:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L);
+
+
+
+    /**
+     * 测试例题10
+     */
+    printf("\n*************** 测试10 *********************\n");
+    create_TailInsert(L, increaseArray, length);
+    printf("链表L:");
+    printLinkList(L);
+    printf("\n");
+
+
+    int x = 8;
+    int cnt = 0;
+    cnt = countLessThanX(L, x);
+
+    printf("比%d小的数有%d个:", x, cnt);
+
+    freeLinkList(L);
+
+
+
+    /**
+     * 测试例题11
+     */
+    printf("\n*************** 测试11 *********************\n");
+    create_TailInsert(L1, increaseArray, length);
+    printf("删除前链表La:");
+    printLinkList(L1);
+    printf("\n");
+
+    create_TailInsert(L2, increaseArrayBig, length);
+    printf("删除前链表Lb:");
+    printLinkList(L2);
+    printf("\n");
+
+    removeRepeatInBoth(L1, L2);
+
+    printf("删除后链表La:");
+    printLinkList(L1);
+    printf("\n");
+
+    freeLinkList(L1);
+    freeLinkList(L2);
+
 }
 
 
