@@ -32,8 +32,10 @@ int main () {
 
     freeCSTree(T);
 
+
+
     /**
-     * 测试27 建立树,先根遍历,后根遍历
+     * 测试27
      */
     printf("\n*************** 测试27 *********************\n");
     T = createBitTreePreMiddle(preArray, 0, length - 1,
@@ -55,33 +57,10 @@ int main () {
     freeCSTree(T);
 
 
-    /**
-     * 测试27 建立树,先根遍历,后根遍历
-     */
-    printf("\n*************** 测试27 *********************\n");
-    T = createBitTreePreMiddle(preArray, 0, length - 1,
-                               inArray, 0, length - 1);
-    printf("先根遍历:");
-    preOrderTraverse(T);
-    printf("\n");
-    printf("后根遍历:");
-    postOrderTraverse(T);
-    printf("\n");
-
-    count = countCSTreeLeaf(T);
-    printf("树的叶子节点有 %d 个", count);
-    printf("\n");
-    count = getLeafsSum(T);
-    printf("树的叶子节点有 %d 个", count);
-    printf("\n");
-
-    freeCSTree(T);
-
-
 
 
     /**
-     * 测试28 建立树,先根遍历,后根遍历
+     * 测试28
      */
     printf("\n*************** 测试28 *********************\n");
     T = createBitTreePreMiddle(preArray, 0, length - 1,
@@ -98,6 +77,30 @@ int main () {
     printf("\n");
 
     freeCSTree(T);
+
+
+
+    /**
+     * 测试29
+     */
+    printf("\n*************** 测试29 *********************\n");
+    T = createBitTreePreMiddle(preArray, 0, length - 1,
+                               inArray, 0, length - 1);
+    printf("先根遍历:");
+    preOrderTraverse(T);
+    printf("\n");
+    printf("后根遍历:");
+    postOrderTraverse(T);
+    printf("\n");
+
+    count = depth(T);
+    printf("树的深度为 %d ", count);
+    printf("\n");
+
+    freeCSTree(T);
+
+
+
 
 
 

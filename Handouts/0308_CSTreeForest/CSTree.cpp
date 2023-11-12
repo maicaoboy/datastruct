@@ -32,22 +32,24 @@ void preOrderTraverse(CSTree T) {
         preOrderTraverse(pCurChild);
         pCurChild = pCurChild->nextSibling;
     }
+    preOrderTraverse(T->nextSibling);
 }
 
 /**
  * 树的后根遍历算法:依次先根遍历每一棵子树,然后再访问根节点
  * @param T
  */
-void postOrderTraverse(CSTree T) {
+void inOrderTraverse(CSTree T) {
     if(T == NULL) {
         return;
     }
     CSTNode *pCurNode = T->firstChild;
     while(pCurNode != NULL) {
-        postOrderTraverse(pCurNode);
+        inOrderTraverse(pCurNode);
         pCurNode = pCurNode->nextSibling;
     }
     visit(T);
+    inOrderTraverse(T->nextSibling);
 }
 
 
