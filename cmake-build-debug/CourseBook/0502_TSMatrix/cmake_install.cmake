@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/CourseBook/0502_TSMatrix
+# Install script for directory: /cygdrive/d/Clion/datastruct-master/CourseBook/0502_TSMatrix
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/Handouts/0204_CircleLinkChar
+# Install script for directory: /cygdrive/d/Clion/datastruct-master/Handouts/0204_CircleLinkChar
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

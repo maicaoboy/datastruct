@@ -1,10 +1,10 @@
-C:\Users\xiang\AppData\Local\JetBrains\CLion2023.2\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/cygdrive/c/Users/xiang/AppData/Local/Programs/CLion/bin/ninja/cygwin/x64/ninja.exe -G Ninja -S /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master -B /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug
+"D:\ProgramFile\CLion 2021.2.3\bin\.CLion\system\cygwin_cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/cygdrive/d/ProgramFile/ToolBox/CLion/bin/ninja/cygwin/x64/ninja.exe -G Ninja -S /cygdrive/d/Clion/datastruct-master -B /cygdrive/d/Clion/datastruct-master/cmake-build-debug
 -- The C compiler identification is GNU 11.4.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /usr/bin/cc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Configuring done (2.5s)
--- Generating done (1.1s)
--- Build files have been written to: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug
+-- Configuring done (5.1s)
+-- Generating done (0.5s)
+-- Build files have been written to: /cygdrive/d/Clion/datastruct-master/cmake-build-debug

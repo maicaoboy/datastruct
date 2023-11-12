@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/CourseBook/0602_BiTree
+# Install script for directory: /cygdrive/d/Clion/datastruct-master/CourseBook/0602_BiTree
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

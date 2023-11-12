@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/Handouts
+# Install script for directory: /cygdrive/d/Clion/datastruct-master/Handouts
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,41 +39,41 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0101_SequenceList/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0101_SequenceList/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0201_LinkList/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0201_LinkList/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0202_LinkListChar/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0202_LinkListChar/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0203_CircleLinkList/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0203_CircleLinkList/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0204_CircleLinkChar/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0204_CircleLinkChar/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0205_DuLinkList/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0205_DuLinkList/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0206_DuLinkListCircle/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0206_DuLinkListCircle/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug/Handouts/0301_BitTree/cmake_install.cmake")
+  include("/cygdrive/d/Clion/datastruct-master/cmake-build-debug/Handouts/0301_BitTree/cmake_install.cmake")
 endif()
 

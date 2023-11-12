@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/CourseBook/0209_ELinkList
+# Install script for directory: /cygdrive/d/Clion/datastruct-master/CourseBook/0209_ELinkList
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
