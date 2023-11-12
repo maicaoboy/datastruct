@@ -453,6 +453,7 @@ void tailInsert(LinkNode *&tail, LinkNode *node) {
 
 
 /**
+ * 例题：13
  * La和Lb按值非递减,归并La和Lb,得到新的链表Lc,是的Lc也按值非递减且不含重复元素
  * !!!合并后要处理末尾元素
  * @param L         合并后的新表
@@ -496,6 +497,7 @@ void merge(LinkList &L, LinkList La, LinkList Lb) {
 
 
 /**
+ * 例题：14
  * 带头节点单链表中所有元素的数据按递增序列排序,删除链表中大于min且小于max的元素
  * @param L
  * @param min
@@ -521,12 +523,264 @@ void deleteBetweenMinMax(LinkList L, int min, int max) {
 
 
 
+/**
+ * 例题15
+ * 对链表使用冒泡排序
+ * @param L
+ */
+void bubbleSort(LinkList L) {
+    LinkNode *pre = L;
+    LinkNode *cur = L->next;
+    LinkNode *ptr = L->next;
+
+    while(ptr != NULL) {
+        while(cur != NULL) {
+            if(pre != L && pre->data > cur->data) {
+                int data = pre->data;
+                pre->data = cur->data;
+                cur->data = data;
+            }
+            pre = cur;
+            cur = cur->next;
+        }
+        pre = L;
+        cur = L->next;
+        ptr = ptr->next;
+    }
+}
+
+/**
+ * 例题15
+ * 对链表使用冒泡排序
+ * 讲义更好的做法
+ * @param L
+ */
+void bubbleSort_better(LinkList L) {
+    int isExchanged = 0;
+    LinkNode *cur = L->next;
+
+    while(1) {
+        isExchanged = 0;
+        cur = L->next;
+        while(cur != NULL && cur->next != NULL) {
+            if(cur->data > cur->next->data) {
+                int data = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = data;
+                isExchanged = 1;
+            }
+            cur = cur->next;
+        }
+        if(!isExchanged) {
+            break;
+        }
+    }
+}
+
+
+
+/**
+ * 例题16: 设L为单链表头节点地址,其数据节点都是正整数可能存在相同数值的节点,
+ * 设计一个空间复杂度最低的算法,利用直接插入排序把该链表整理成有序递增的链表并将重复节点删除
+ * @param L
+ */
+void insertSortAndRemoveRepeat(LinkList L) {
+    LinkNode *ptr = L->next;
+    L->next = NULL;
+    LinkNode *node;
+    LinkNode *pre;
+    LinkNode *cur;
+
+    while(ptr != NULL) {
+        node = ptr;
+        ptr = ptr->next;
+
+        pre = L;
+        cur = L->next;
+        while(cur && cur->data < node->data) {
+            pre = cur;
+            cur = cur->next;
+        }
+        if(cur == NULL || cur->data != node->data) {
+            node->next = cur;
+            pre->next = node;
+        } else{
+            free(node);
+        }
+    }
+}
+
+
+
+//将带头单链表中所有小于x的元素都排在其前面,所有大于x的元素都排在其后面
+void divide(LinkList L, int x) {
+    LinkNode *ptr = L->next;
+    L->next = NULL;
+
+    LinkNode *xNode = (LinkNode*) malloc(sizeof (LinkNode));
+    xNode->data = x;
+    xNode->next = NULL;
+    L->next = xNode;
+
+    LinkNode *tail1 = L;
+    LinkNode *tail2 = xNode;
+
+    while(ptr != NULL) {
+        LinkNode *node = ptr;
+        ptr = ptr->next;
+        if(node->data < x) {
+            node->next = xNode;
+            tail1->next = node;
+            tail1 = node;
+        }else if(node->data == x) {
+            if(xNode->next == NULL) {
+                tail2 = node;
+            }
+            node->next = xNode->next;
+            xNode->next = node;
+        }else {
+            node->next = tail2->next;
+            tail2->next = node;
+            tail2 = node;
+        }
+    }
+    tail1->next = xNode->next;
+    free(xNode);
+}
+
+//设计一个算法,判断La是否为Lb的子链,子链的定义为:La中的从前到后的所有节点的数据域都按照原有的顺序出现在Lb中
+int isSubLinkList(LinkList La, LinkList Lb) {
+    LinkNode *ptr1;
+    LinkNode *ptr2;
+    LinkNode *ptr = Lb->next;
+
+    while(ptr) {
+        ptr1 = La->next;
+        ptr2 = ptr;
+
+        while(ptr1 && ptr2) {
+            if(ptr1->data != ptr2->data) {
+                break;
+            }
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+
+        }
+
+        if(!ptr1) {
+            return 1;
+        }
+
+        ptr = ptr->next;
+    }
+
+    return 0;
+
+}
+
+
+
+//两个单词有相同的后缀时可共享相同后缀的存储空间,例如:"act"和"dict",
+// 设La和Lb分别指向两个单词所在单链表的头节点,链表节点结构为(data,next),
+//设计算法查找公共后缀的起始位置.
+void sameEnding(LinkList La, LinkList Lb, LinkNode *&node) {
+    int countA = countLinkList(La);
+    int countB = countLinkList(Lb);
+
+    LinkNode *ptrA;
+    LinkNode *ptrB;
+
+    if(countA < countB) {
+        ptrA = La->next;
+        ptrB = Lb->next;
+
+    }else {
+        ptrA = Lb->next;
+        ptrB = La->next;
+        int temp = countA;
+        countA = countB;
+        countB = temp;
+    }
+
+    while(countA < countB) {
+        ptrB = ptrB->next;
+        countA++;
+    }
+
+    while(ptrA && ptrB) {
+        if(ptrA == ptrB) {
+            node = ptrA;
+            return;
+        }
+        ptrA = ptrA->next;
+        ptrB = ptrB->next;
+    }
+
+    node = NULL;
+}
 
 
 
 
+void tailInsert_20(LinkNode *&tail, LinkNode *node) {
+    node->next = NULL;
+    tail->next = node;
+    tail = node;
+}
+
+//长度为n的单链表L=(L1,L2,L3...Ln),
+// 请给出链表的存储结构并用C语言编写时间复杂度和空间复杂度最少的算法
+// 将单链表L转化成LT=(L1,Ln, L2,Ln-1,L3,Ln-2)
+void mix(LinkList L, int n) {
+    LinkNode *ptr1 = L->next;
+    LinkNode *ptr2 = L->next;
+    L->next = NULL;
+    LinkNode *ptr;
+    LinkNode *link2;
+    LinkNode *tail2;
 
 
+    for(int i = 0; i < n / 2; i++) {
+        ptr = ptr2;
+        ptr2 = ptr2->next;
+    }
+
+    if(n % 2 != 0) {
+        ptr = ptr2;
+        ptr2 = ptr2->next;
+    }
+    ptr->next = NULL;
+
+    link2 = ptr2;
+    tail2 = ptr2;
+
+    ptr = ptr2->next;
+    ptr2->next = NULL;
+    while(ptr) {
+        LinkNode *node = ptr;
+        ptr = ptr->next;
+        tailInsert_20(tail2, node);
+    }
+
+    ptr2 = link2;
+    tail2 = L;
+    while(ptr1 && ptr2) {
+        LinkNode *node = ptr1;
+        ptr1 = ptr1->next;
+        tailInsert_20(tail2, node);
+
+        node = ptr2;
+        ptr2 = ptr2->next;
+        tailInsert_20(tail2, node);
+    }
+
+    while(ptr1) {
+        LinkNode *node = ptr1;
+        ptr1 = ptr1->next;
+        tailInsert_20(tail2, node);
+    }
+
+}
 
 
 

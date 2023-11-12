@@ -33,7 +33,7 @@ rule C_COMPILER__Scanf_lib_unscanned_Debug
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__Scanf_lib_Debug
-  command = $PRE_LINK && /cygdrive/c/Users/lhb/AppData/Local/JetBrains/CLion2023.2/cygwin_cmake/bin/cmake.exe -E rm -f $TARGET_FILE && /usr/bin/ar.exe qc $TARGET_FILE $LINK_FLAGS $in && /usr/bin/ranlib.exe $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && /cygdrive/c/Users/xiang/AppData/Local/JetBrains/CLion2023.2/cygwin_cmake/bin/cmake.exe -E rm -f $TARGET_FILE && /usr/bin/ar.exe qc $TARGET_FILE $LINK_FLAGS $in && /usr/bin/ranlib.exe $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -912,10 +912,64 @@ rule CXX_EXECUTABLE_LINKER__LinkList_M_Debug
 
 
 #############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__LinkList_char_M_Debug
+  command = $PRE_LINK && $POST_BUILD
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__LinkList_Circle_M_Debug
+  command = $PRE_LINK && $POST_BUILD
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__LinkListCircle_Char_M_Debug
+  command = $PRE_LINK && $POST_BUILD
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__DuLinkList_M_Debug
+  command = $PRE_LINK && $POST_BUILD
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__DuLinkListCircle_M_Debug
+  command = $PRE_LINK && $POST_BUILD
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__BitTree_M_Debug
+  command = $PRE_LINK && $POST_BUILD
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /cygdrive/c/Users/lhb/AppData/Local/JetBrains/CLion2023.2/cygwin_cmake/bin/cmake.exe --regenerate-during-build -S/cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion -B/cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion/cmake-build-debug
+  command = /cygdrive/c/Users/xiang/AppData/Local/JetBrains/CLion2023.2/cygwin_cmake/bin/cmake.exe --regenerate-during-build -S/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master -B/cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
@@ -924,7 +978,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = /cygdrive/c/Users/lhb/AppData/Local/Programs/CLion/bin/ninja/cygwin/x64/ninja.exe $FILE_ARG -t clean $TARGETS
+  command = /cygdrive/c/Users/xiang/AppData/Local/Programs/CLion/bin/ninja/cygwin/x64/ninja.exe $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -932,6 +986,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = /cygdrive/c/Users/lhb/AppData/Local/Programs/CLion/bin/ninja/cygwin/x64/ninja.exe -t targets
+  command = /cygdrive/c/Users/xiang/AppData/Local/Programs/CLion/bin/ninja/cygwin/x64/ninja.exe -t targets
   description = All primary targets available:
 

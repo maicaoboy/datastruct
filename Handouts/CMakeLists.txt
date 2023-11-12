@@ -1,3 +1,8 @@
 add_subdirectory(0101_SequenceList)
 add_subdirectory(0201_LinkList)
 add_subdirectory(0202_LinkListChar)
+add_subdirectory(0203_CircleLinkList)
+add_subdirectory(0204_CircleLinkChar)
+add_subdirectory(0205_DuLinkList)
+add_subdirectory(0206_DuLinkListCircle)
+add_subdirectory(0301_BitTree)

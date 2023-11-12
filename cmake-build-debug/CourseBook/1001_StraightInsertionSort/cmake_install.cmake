@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion/CourseBook/1001_StraightInsertionSort
+# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/CourseBook/1001_StraightInsertionSort
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

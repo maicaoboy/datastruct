@@ -1,0 +1,142 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "Handouts/0205_DuLinkList/DuLinkList_M.exe"
+		},
+		{
+			"path" : "Handouts/0205_DuLinkList/DuLinkList_M.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"Handouts/0205_DuLinkList/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Scanf_lib::@fe314c4577536ad9eb12"
+		}
+	],
+	"id" : "DuLinkList_M::@4195451cc24c9d040743",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wl,--enable-auto-import",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-L/usr/lib/gcc/x86_64-pc-cygwin/11",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-L/usr/x86_64-pc-cygwin/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Status/libScanf_lib.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc_s",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcygwin",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ladvapi32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lshell32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-luser32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc_s",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "DuLinkList_M",
+	"nameOnDisk" : "DuLinkList_M.exe",
+	"paths" : 
+	{
+		"build" : "Handouts/0205_DuLinkList",
+		"source" : "Handouts/0205_DuLinkList"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "Handouts/0205_DuLinkList/DuLinkList.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Handouts/0205_DuLinkList/DuLinkList_main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

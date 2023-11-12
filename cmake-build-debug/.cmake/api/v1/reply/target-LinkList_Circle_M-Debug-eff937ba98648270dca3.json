@@ -1,0 +1,142 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "Handouts/0203_CircleLinkList/LinkList_Circle_M.exe"
+		},
+		{
+			"path" : "Handouts/0203_CircleLinkList/LinkList_Circle_M.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"Handouts/0203_CircleLinkList/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Scanf_lib::@fe314c4577536ad9eb12"
+		}
+	],
+	"id" : "LinkList_Circle_M::@d74361830af82af5c379",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wl,--enable-auto-import",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-L/usr/lib/gcc/x86_64-pc-cygwin/11",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-L/usr/x86_64-pc-cygwin/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Status/libScanf_lib.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc_s",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcygwin",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ladvapi32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lshell32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-luser32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc_s",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "LinkList_Circle_M",
+	"nameOnDisk" : "LinkList_Circle_M.exe",
+	"paths" : 
+	{
+		"build" : "Handouts/0203_CircleLinkList",
+		"source" : "Handouts/0203_CircleLinkList"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "Handouts/0203_CircleLinkList/LinkList.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Handouts/0203_CircleLinkList/LinkList_main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

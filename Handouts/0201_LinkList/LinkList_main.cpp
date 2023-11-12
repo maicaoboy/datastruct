@@ -324,6 +324,9 @@ int main() {
 
 
 
+    /**
+     * 测试例题14
+     */
     printf("\n*************** 测试14 *********************\n");
     create_TailInsert(L, increaseArray, length);
     printf("L:");
@@ -340,6 +343,151 @@ int main() {
     printf("\n");
 
     freeLinkList(L);
+
+
+
+    /**
+     * 测试例题15
+     */
+    printf("\n*************** 测试15 *********************\n");
+    create_TailInsert(L, randomArray, length);
+    printf("L:");
+    printLinkList(L);
+    printf("\n");
+
+    bubbleSort_better(L);
+
+    printf("冒泡排序后链表L:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L);
+
+
+    /**
+     * 测试例题16
+     */
+    printf("\n*************** 测试16 *********************\n");
+    create_TailInsert(L, randomArray, length);
+    printf("L:");
+    printLinkList(L);
+    printf("\n");
+
+    insertSortAndRemoveRepeat(L);
+
+    printf("插入排序并去重后链表L:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L);
+
+    /**
+     * 测试例题17
+     */
+
+    printf("\n*************** 测试17 *********************\n");
+    create_TailInsert(L, randomArray, length);
+    printf("L:");
+    printLinkList(L);
+    printf("\n");
+
+    x = 7;
+    divide(L, x);
+
+    printf("分割界x:%d后L:", x);
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L);
+
+
+    /**
+     * 测试例题18
+     */
+
+    printf("\n*************** 测试18 *********************\n");
+    int testArray[] = {1,56,1};
+    create_TailInsert(L1, testArray, 3);
+    printf("L1:");
+    printLinkList(L1);
+    printf("\n");
+
+    create_TailInsert(L2, randomArray, length);
+    printf("L2:");
+    printLinkList(L2);
+    printf("\n");
+
+    int isSub = isSubLinkList(L1, L2);
+
+    printf("%d", isSub);
+    printf("\n");
+
+    freeLinkList(L1);
+    freeLinkList(L2);
+
+
+    /**
+     * 测试例题19
+     */
+
+    printf("\n*************** 测试19 *********************\n");
+    create_TailInsert(L1, testArray, 3);
+
+    create_TailInsert(L2, randomArray, length);
+
+    LinkNode *ptr2 = L2;
+
+    while(ptr2->next) {
+        ptr2 = ptr2->next;
+    }
+
+    ptr2->next = L1->next->next;
+
+    printf("L1:");
+    printLinkList(L1);
+    printf("\n");
+
+    printf("L2:");
+    printLinkList(L2);
+    printf("\n");
+
+    LinkNode *sameNode = NULL;
+    sameEnding(L1, L2, sameNode);
+
+
+
+    if(sameNode) {
+        printf("有");
+    }else {
+        printf("没有");
+    }
+    printf("\n");
+
+    freeLinkList(L1);
+    freeLinkList(L2);
+
+    /**
+     * 测试例题20
+     */
+
+    printf("\n*************** 测试20 *********************\n");
+    create_TailInsert(L, array, length);
+    printf("L:");
+    printLinkList(L);
+    printf("\n");
+
+    mix(L, length);
+
+    printf("混合后链表L:");
+    printLinkList(L);
+    printf("\n");
+
+    freeLinkList(L);
+
+
+
+
+
 
 }
 

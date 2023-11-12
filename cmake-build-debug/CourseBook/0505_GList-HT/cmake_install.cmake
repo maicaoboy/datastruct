@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/lhb/Documents/code/Clion/855MyVersion/CourseBook/0505_GList-HT
+# Install script for directory: /cygdrive/c/Users/xiang/CLionProjects/lhb/datastruct-master/CourseBook/0505_GList-HT
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
