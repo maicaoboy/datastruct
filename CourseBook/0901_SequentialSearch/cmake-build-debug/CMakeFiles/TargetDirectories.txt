@@ -1,0 +1,3 @@
+/cygdrive/d/Clion/855MyVersion/CourseBook/0901_SequentialSearch/cmake-build-debug/CMakeFiles/Search_Seq.dir
+/cygdrive/d/Clion/855MyVersion/CourseBook/0901_SequentialSearch/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/d/Clion/855MyVersion/CourseBook/0901_SequentialSearch/cmake-build-debug/CMakeFiles/rebuild_cache.dir
