@@ -332,9 +332,8 @@ void converseARCNetToMNet(ALGraph G, MGraph &mG) {
     }
 
     for (int i = 1; i <= G.vexnum; ++i) {
-        VNode vNode = G.vertices[i];
-        VertexType v = vNode.vex;
-        ArcNode *nextArc = vNode.firstarc;
+        VertexType v = G.vertices[i].vex;
+        ArcNode *nextArc = G.vertices[i].firstarc;
         while(nextArc != NULL) {
             VertexType w = nextArc->adjvex;
             mG.arcs[v][w].adj = nextArc->weight;
@@ -356,15 +355,16 @@ void visit(VertexType v) {
 void DFS(ALGraph G, VertexType v) {
     visit(v);
     visited[v] = TRUE;
-    VNode vNode = G.vertices[v];
-    ArcNode *arcNode = vNode.firstarc;
+    ArcNode *arcNode = G.vertices[v].firstarc;
     while(arcNode != NULL) {
-        DFS(G, arcNode->adjvex);
+        if(!visited[arcNode->adjvex]) {
+            DFS(G, arcNode->adjvex);
+        }
         arcNode = arcNode->nextarc;
     }
 }
 
-void DFS(ALGraph G) {
+void DFSTraverse(ALGraph G) {
     for (int i = 1; i <= G.vexnum; ++i) {
         visited[i] = FALSE;
     }
@@ -375,6 +375,260 @@ void DFS(ALGraph G) {
     }
 }
 
+#define white 0
+#define red 1
+#define black 2
+
+int DFS_existRing(ALGraph G, VertexType v) {
+    visited[v] = red;
+    ArcNode *nextArc = G.vertices[v].firstarc;
+    while(nextArc != NULL) {
+        if(visited[nextArc->adjvex] == red) {
+            return TRUE;
+        }
+        if(visited[nextArc->adjvex] == white) {
+            int ret = DFS_existRing(G, nextArc->adjvex);
+            if(ret == 1) {
+                return TRUE;
+            }
+        }
+        nextArc = nextArc->nextarc;
+    }
+    visited[v] = black;
+    return FALSE;
+}
+
+
+/**
+ * 例题 7、判断以邻接表为存储结构的有向图 G 是否存在环。
+ * @param G
+ * @return
+ */
+int DFSTraverse_existRing(ALGraph G) {
+    for (int i = 1; i <= G.vexnum; ++i) {
+        visited[i] = white;
+    }
+    for (int i = 1; i <= G.vexnum; ++i) {
+        if(visited[i] == white) {
+            int ret = DFS_existRing(G, i);
+            if(ret) {
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+
+void initVisited(int vexnum) {
+    for (int i = 1; i <= vexnum; ++i) {
+        visited[i] = FALSE;
+    }
+}
+
+
+/**
+ * 例题8、编写算法判断以邻接表方式存储的有向图 G是否存在srcVertex 到 destVertex 的路径。
+ * @param G
+ * @param src
+ * @param dest
+ * @return
+ */
+int existRoute(ALGraph G, VertexType src, VertexType dest) {
+    visited[src] = TRUE;
+    if(src == dest) {
+        return TRUE;
+    }
+    ArcNode *nextArc = G.vertices[src].firstarc;
+    while(nextArc != NULL) {
+        if(visited[nextArc->adjvex] == FALSE) {
+            int ret = existRoute(G, nextArc->adjvex, dest);
+            if(ret) {
+                return TRUE;
+            }
+        }
+        nextArc = nextArc->nextarc;
+    }
+    return FALSE;
+}
+
+
+
+void printRoute(VertexType routeStack[], int routeLength) {
+    printf("route: ");
+    for (int i = 0; i < routeLength; ++i) {
+        printf("%d ", routeStack[i]);
+    }
+    printf("\n");
+}
+
+VertexType routeStack[MAX_VERTEX_NUM] = {0};
+int routeLength = 0;
+
+
+/**
+ * 例题9: 设计算法，求出以邻接表存储的有向图中所有从顶点v到顶点w的简单路径
+ * @param G
+ * @param v
+ * @param w
+ */
+void findAllRoute(ALGraph G, VertexType v, VertexType w) {
+    visited[v] = TRUE;
+    routeStack[routeLength++] = v;
+    if(v == w) {
+        printRoute(routeStack, routeLength);
+    }
+    ArcNode *nextArc = G.vertices[v].firstarc;
+    while(nextArc != NULL) {
+        if(visited[nextArc->adjvex] == FALSE) {
+            findAllRoute(G, nextArc->adjvex, w);
+        }
+        nextArc = nextArc->nextarc;
+    }
+    routeLength--;
+    visited[v] = FALSE;
+}
+
+int length = 0;
+
+
+void printRoute(VertexType routeStack[]) {
+    printf("route: ");
+    for (int i = 0; i < length + 1; ++i) {
+        printf("%d ", routeStack[i]);
+    }
+    printf("\n");
+}
+/**
+ * 例题10、设计算法求解以邻接表存储的有向图 G中所有从顶点v到顶点w长度为d的路径。
+ * @param G
+ * @param d   路径长度
+ * @param v
+ * @param w
+ */
+void findRouteLengthD(ALGraph G, int d, int v, int w) {
+    visited[v] = TRUE;
+    routeStack[routeLength++] = v;
+    if(d == 0 && v == w) {
+        printRoute(routeStack);
+    }
+    ArcNode *nextArc = G.vertices[v].firstarc;
+    while(nextArc != NULL) {
+        if(visited[nextArc->adjvex] == FALSE) {
+            findRouteLengthD(G, d - 1, nextArc->adjvex, w);
+        }
+        nextArc = nextArc->nextarc;
+    }
+    visited[v] = FALSE;
+    routeLength--;
+}
+
+
+VertexType topologyStack[MAX_VERTEX_NUM];
+int topologyLength = 0;
+/**
+ * 例题 11(辅助函数)、设计算法对有向无环图 G 进行拓扑排序。
+ * @param G
+ * @param v
+ */
+void topologySort(ALGraph G, VertexType v) {
+    visited[v] = TRUE;
+    ArcNode *nextNode = G.vertices[v].firstarc;
+    while(nextNode != NULL) {
+        if(!visited[nextNode->adjvex]) {
+            topologySort(G, nextNode->adjvex);
+        }
+        nextNode = nextNode->nextarc;
+    }
+    topologyStack[topologyLength++] = v;
+}
+
+/**
+ * 例题 11、 设计算法对有向无环图 G 进行拓扑排序。
+ * @param G
+ */
+void topology_DFS(ALGraph G) {
+    for (int i = 1; i <= G.vexnum; ++i) {
+        if(!visited[i]) {
+            topologySort(G, i);
+        }
+    }
+    printf("TopologySort: ");
+    for(int i = G.vexnum - 1; i >= 0; i--) {
+        printf("%d ", topologyStack[i]);
+    }
+}
+
+
+VertexType path[MAX_VERTEX_NUM] = {-1};
+int distance[MAX_VERTEX_NUM] = {INF};
+int isAdded[MAX_VERTEX_NUM] = {FALSE};
+
+int isAllAdded(int vexnum) {
+    for (int i = 1; i <= vexnum; ++i) {
+        if(isAdded[i] == FALSE) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+//例题12、求有向带权网N中srcVertex 到其余顶点的最短路径，并将最短路径打印输出。
+void dijkstra(MGraph G, VertexType src) {
+    //将起始节点接入并更新路径
+    for (int i = 1; i <= G.vexnum; ++i) {
+        isAdded[i] = FALSE;
+        if(G.arcs[src][i].adj != INF) {
+            distance[i] = G.arcs[src][i].adj;
+            path[i] = src;
+        }else {
+            distance[i] = INF;
+            path[i] = -1;
+        }
+    }
+    isAdded[src] = TRUE;
+
+    distance[src] = 0;
+    while(!isAllAdded(G.vexnum)) {
+        //找最短
+        int min = INF;
+        int v = -1;
+        for (int i = 1; i <= G.vexnum; ++i) {
+            if(isAdded[i] == FALSE && distance[i] < min) {
+                min = distance[i];
+                v = i;
+            }
+        }
+        if(v == -1) {
+            break;
+        }
+        //更新最短路径
+        isAdded[v] = TRUE;
+        for (int i = 1; i <= G.vexnum; ++i) {
+            if(G.arcs[v][i].adj != INF && distance[v] + G.arcs[v][i].adj < distance[i]) {
+                distance[i] = distance[v] + G.arcs[v][i].adj;
+                path[i] = v;
+            }
+        }
+    }
+}
+
+
+
+void printPath(MGraph G, int src) {
+    for (int i = 1; i <= G.vexnum; ++i) {
+        int k = i;
+        if(k == src) continue;
+        printf("path:%d -> %d:", src, k);
+        printf("%d ", i);
+        while(path[k] != src && path[k] != -1) {
+            printf("%d ", path[k]);
+            k = path[k];
+        }
+        printf("%d ", src);
+        printf("\ndistance = %d\n", distance[i]);
+    }
+}
 
 
 
@@ -403,6 +657,14 @@ void DFS(ALGraph G) {
 
 
 
+
+
+
+
+void initRoute(int d) {
+    routeLength = 0;
+    length = d;
+}
 
 void printGragh(ALGraph G) {
     printf("输出图结构:\n");
@@ -440,7 +702,7 @@ void printGragh_mG(MGraph G) {
             if(G.arcs[i][j].adj == INF){
                 printf("-1\t");
             }else {
-                printf("%d\t", G.arcs[i][j]);
+                printf("%d\t", G.arcs[i][j].adj);
             }
         }
         printf("\n");

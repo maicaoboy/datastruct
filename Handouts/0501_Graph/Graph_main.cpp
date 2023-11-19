@@ -6,7 +6,13 @@
 int main() {
     FILE *vertexFile = fopen("./Handouts/0501_Graph/vertex.txt", "r");
     FILE *arcFile = fopen("./Handouts/0501_Graph/arc.txt", "r");
+    FILE *vertexFile_ring = fopen("./Handouts/0501_Graph/vertex_ring.txt", "r");
+    FILE *arcFile_ring = fopen("./Handouts/0501_Graph/arc_ring.txt", "r");
     int vertex[MAX_VERTEX_NUM] = {0};
+    int arc[MAX_VERTEX_NUM][3] = {0};
+    int vertex_ring[MAX_VERTEX_NUM] = {0};
+    int arc_ring[MAX_VERTEX_NUM][3] = {0};
+
 
 
     /**
@@ -15,7 +21,6 @@ int main() {
     printf("\n*************** 测试0 *********************\n");
 
 
-    int arc[MAX_VERTEX_NUM][3] = {0};
 
     int vexnum = 0;
     if(vertexFile != NULL) {
@@ -43,6 +48,34 @@ int main() {
     printf("\nArc: \n");
     for(int i = 0; i < arcnum; i++) {
         printf("%d %d\n", arc[i][0], arc[i][1]);
+    }
+
+    int vexnum_ring = 0;
+    if(vertexFile_ring != NULL) {
+        while(!feof(vertexFile_ring)) {
+            fscanf(vertexFile_ring, "%d", &vertex_ring[vexnum_ring]);
+            vexnum_ring++;
+        }
+    }
+
+    int arcnum_ring = 0;
+    if(arcFile_ring != NULL) {
+        while(!feof(arcFile_ring)) {
+            fscanf(arcFile_ring, "%d %d %d", &arc_ring[arcnum_ring][0], &arc_ring[arcnum_ring][1], &arc_ring[arcnum_ring][2]);
+            arcnum_ring++;
+        }
+    }
+
+    fclose(vertexFile_ring);
+    fclose(arcFile_ring);
+
+    printf("Vextex_ring: ");
+    for(int i = 0; i < vexnum_ring; i++) {
+        printf("%d ", vertex_ring[i]);
+    }
+    printf("\nArc_ring: \n");
+    for(int i = 0; i < arcnum_ring; i++) {
+        printf("%d %d\n", arc_ring[i][0], arc_ring[i][1]);
     }
 
 
@@ -131,10 +164,122 @@ int main() {
     printf("\n*************** 测试6 *********************\n");
     createALGraph_DN(G, vertex, vexnum, arc, arcnum);
     printGragh(G);
-    DFS(G);
+    DFSTraverse(G);
     printf("\n");
     freeGraph_ALGraph(G);
 
+
+    /**
+     * 测试7
+     */
+    printf("\n*************** 测试7 *********************\n");
+    createALGraph_DG(G, vertex, vexnum, arc, arcnum);
+    int ret = DFSTraverse_existRing(G);
+    printGragh(G);
+    freeGraph_ALGraph(G);
+    if(ret) {
+        printf("exist ring\n");
+    }else {
+        printf("no ring\n");
+    }
+
+    createALGraph_DG(G, vertex_ring, vexnum_ring, arc_ring, arcnum_ring);
+    ret = DFSTraverse_existRing(G);
+    printGragh(G);
+    freeGraph_ALGraph(G);
+    if(ret) {
+        printf("exist ring\n");
+    }else {
+        printf("no ring\n");
+    }
+
+
+    /**
+     * 测试8
+     */
+    printf("\n*************** 测试8 *********************\n");
+    createALGraph_DG(G, vertex_ring, vexnum_ring, arc_ring, arcnum_ring);
+    printGragh(G);
+    initVisited(G.vexnum);
+    int src = 4, dest = 1;
+    ret = existRoute(G, src, dest);
+    if(ret) {
+        printf("%d -> %d 的路存在\n", src, dest);
+    }else {
+        printf("%d -> %d 的路不存在\n", src, dest);
+    }
+    initVisited(G.vexnum);
+    src = 1;
+    dest = 8;
+    ret = existRoute(G, src, dest);
+    if(ret) {
+        printf("%d -> %d 的路存在\n", src, dest);
+    }else {
+        printf("%d -> %d 的路不存在\n", src, dest);
+    }
+    freeGraph_ALGraph(G);
+
+
+
+    /**
+     * 测试9
+     */
+    printf("\n*************** 测试9 *********************\n");
+    createALGraph_DG(G, vertex_ring, vexnum_ring, arc_ring, arcnum_ring);
+    printGragh(G);
+    initVisited(G.vexnum);
+    initRoute(-1);
+    int v = 1, w = 4;
+    printf("%d -> %d 的路径有:\n", v, w);
+    findAllRoute(G, v, w);
+    printf("\n");
+    v = 7, w = 5;
+    printf("%d -> %d 的路径有:\n", v, w);
+    findAllRoute(G, v, w);
+    printf("\n");
+    freeGraph_ALGraph(G);
+
+
+    /**
+     * 测试10
+     */
+    printf("\n*************** 测试10 *********************\n");
+    createALGraph_DG(G, vertex_ring, vexnum_ring, arc_ring, arcnum_ring);
+    printGragh(G);
+    initVisited(G.vexnum);
+    v = 1, w = 4;
+    int d = 2;
+    printf("%d -> %d 长度为 %d 的路径有:\n", v, w, d);
+    initRoute(d);
+    findRouteLengthD(G, d, v, w);
+    printf("\n");
+    freeGraph_ALGraph(G);
+
+
+
+
+    /**
+     * 测试11
+     */
+    printf("\n*************** 测试11 *********************\n");
+    createALGraph_DG(G, vertex, vexnum, arc, arcnum);
+    printGragh(G);
+    topology_DFS(G);
+    freeGraph_ALGraph(G);
+
+
+    /**
+     * 测试12
+     */
+    printf("\n*************** 测试12 *********************\n");
+    createALGraph_DN(G, vertex_ring, vexnum_ring, arc_ring, arcnum_ring);
+    converseARCNetToMNet(G, G2);
+    printGragh(G);
+    printGragh_mG(G2);
+    src = 1;
+    dijkstra(G2, src);
+    printPath(G2, src);
+    freeGraph_ALGraph(G);
 }
 
 
