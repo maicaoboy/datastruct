@@ -32,6 +32,26 @@ void deleteDuplicate(LinkList L, ElemType e) {
     }
 }
 
+void deleteDuplicate(LinkList L) {//Ld带节点
+    LinkNode *pre = L->next;
+    if(pre->next == NULL) {
+        return;
+    }
+    LinkNode *cur = pre->next;
+
+    while(cur != NULL) {
+        if(pre->data == cur->data) {
+            pre->next = cur->next;
+            free(cur);
+            cur = pre->next;
+        } else {
+            pre = cur;
+            cur = cur->next;
+        }
+    }
+}
+
+
 /**
  * 使用尾插法创建带头结点的单链表
  * @param L
@@ -63,14 +83,14 @@ void printLinkList(LinkList L) {
 }
 
 int main() {
-    int list[] = {1,2,3,4,5,6,7,7,7,8};
-    int listLength = 10;
+    int list[] = {1,2,2,3,4,4,4,5,6,7,7,7,8};
+    int listLength = 13;
 
     LinkList L = NULL;
     createLinkList(L, list, listLength);
     printLinkList(L);
 
-    deleteDuplicate(L, 7);
+    deleteDuplicate(L);
 
     printLinkList(L);
 }

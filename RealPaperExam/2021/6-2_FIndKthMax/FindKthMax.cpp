@@ -75,4 +75,43 @@ int main() {
     printf("%d\n", res->data);
 }
 
+//Node* rotateListWithDummyHead(Node* head, int k) {
+//    if (head == nullptr || head->next == nullptr || k <= 0) {
+//        return head;
+//    }
+//
+//    // 计算链表长度
+//    int length = 0;
+//    Node* tail = head->next;
+//    while (tail->next != head) {
+//        length++;
+//        tail = tail->next;
+//    }
+//    length++;  // 包括头结点
+//
+//    // 计算实际需要左移的位置
+//    k = k % length;
+//    if (k == 0) {
+//        return head;  // 不需要移动
+//    }
+//
+//    // 找到新的头节点位置
+//    Node* newHead = head->next;
+//    Node* preHead = head;
+//    for (int i = 0; i < length - k; i++) {
+//        preHead = newHead;
+//        newHead = newHead->next;
+//    }
+//
+//    // 将原头结点移动到新节点之前
+//    tail->next = tail->next->next;
+//    preHead->next = head;
+//    head->next = newHead;
+//
+//
+//    return head;
+//}
+
+
+
 
