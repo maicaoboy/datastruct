@@ -56,6 +56,7 @@ void swap(struct score *a, struct score *b) {
     *b = c;
 }
 void total(struct score record[N]) {
+    //两次冒泡排序,运用基数排序思想是的数组按运动项目-成绩有序排列,之后遍历每一项运动的前六个即为所求
     for(int i = 0; i < N; i++) {            //按成绩排序
         for (int j = 1; j < N - i; ++j) {
             if(record[j - 1].place > record[j].place) {
@@ -72,6 +73,7 @@ void total(struct score record[N]) {
         }
     }
 
+    //找出每项运动前六的成绩
     int slow = 0, fast = 0, pre = 0;
     while(slow != N) {
         while(strcmp(record[pre].sports, record[fast].sports) == 0) {

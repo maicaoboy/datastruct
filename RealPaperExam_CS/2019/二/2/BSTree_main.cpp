@@ -1,6 +1,6 @@
 //
 // Created by xiang on 2023/11/8.
-// 150行开始
+// 180行开始
 //
 #include "BSTree.cpp"
 
@@ -170,6 +170,38 @@ int main() {
     printf("\n");
 
     freeBSTree(T);
+
+
+
+
+
+
+
+    /**
+     * 2019CS-2-2
+     */
+    printf("\n*************** 测试20 *********************\n");
+    createBSTree(T, array, length);
+    T->rchild->rchild->lchild->data = 4;
+    printf("先序遍历:");
+    preOrderTraverse(T);
+    printf("\n");
+    printf("中序遍历:");
+    middleOrderTraverse(T);
+    printf("\n");
+
+    x = 4;
+    postOrder_X(T, x);
+
+    printf("先序遍历:");
+    preOrderTraverse(T);
+    printf("\n");
+    printf("中序遍历:");
+    middleOrderTraverse(T);
+    printf("\n");
+
+    freeBSTree(T);
+
 
 
 

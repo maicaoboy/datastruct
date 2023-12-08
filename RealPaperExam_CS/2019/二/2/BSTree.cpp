@@ -1,6 +1,6 @@
 //
 // Created by xiang on 2023/11/8.
-// 250行开始
+// 280行开始
 //
 #include "stdio.h"
 #include "stdlib.h"
@@ -266,6 +266,40 @@ void deleteLessThanX(BSTree &T, int x) {
     }else if(T->data > x) {
         deleteNodeLessX(T->lchild, x);
     }
+}
+
+
+
+
+
+
+
+
+
+
+/**
+* 假设二又树终止为x的结点不少于1个,采用二叉链表存储，编写算法，打印值为 X的结点的所有祖先。
+*/
+
+
+/**
+ * 算法思想:使用后序遍历,若子树中存在x则打印当前节点
+ */
+
+int postOrder_X(BSTree T, ElemType x) {
+    if(T == NULL) return 0;
+
+    int ret = 0;
+    if(postOrder_X(T->lchild, x)) {
+        ret = 1;
+    }
+    if(postOrder_X(T->rchild,x)) {
+        ret = 1;
+    }
+    if(ret) {
+        printf("%d ", T->data);
+    }
+    return T->data == x || ret;
 }
 
 
