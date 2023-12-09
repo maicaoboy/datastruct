@@ -403,7 +403,7 @@ int DFS_existRing(ALGraph G, VertexType v) {
  * 例题 7、判断以邻接表为存储结构的有向图 G 是否存在环。
  * @param G
  * @return
- */
+ */         
 int DFSTraverse_existRing(ALGraph G) {
     for (int i = 1; i <= G.vexnum; ++i) {
         visited[i] = white;

@@ -53,6 +53,23 @@ void theSame(LinkList La, LinkList Lb, LinkList &Lc) {      //La,Lb,Lc均为带�
             }
         }
     }
+    while(La != NULL) {
+        LinkNode *node = La;
+        La = La->next;
+        if(Lc->next == Lc || node->data != Lc->next->data) {        //如果Lc为空或者当前相等的节点在Lc不存在,则进行插入操作
+            node->next = Lc->next;
+            Lc->next = node;
+        }
+    }
+
+    while(Lb != NULL) {
+        LinkNode *node = Lb;
+        Lb = Lb->next;
+        if(Lc->next == Lc || node->data != Lc->next->data) {        //如果Lc为空或者当前相等的节点在Lc不存在,则进行插入操作
+            node->next = Lc->next;
+            Lc->next = node;
+        }
+    }
 }
 
 

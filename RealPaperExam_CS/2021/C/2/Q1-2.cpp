@@ -55,30 +55,58 @@ void summary(struct score record[N]) {
 
 
 /**
-* 将字符串的字母按照ASCII码值从小到大进行排序并删除重复字符后输出
+ * 将字符串的字母按照ASCII码值从小到大进行排序并删除重复字符后输出(错误的)
+ * 使用标记数组,若小写标记1,大写标记2
 */
-void sortChar() {
-    char str[1025];
-    char c = 'a';
-    int len = 0;
-    printf("输入一段字符串,以'#'结束");
-    for(int i = 0; len < 1024; i++) {
-        scanf("%c", &c);
-        if(c != '#') {
-            for (int j = 0; j < len; ++j) {
-                if(str[j] == c) {
-                    continue;
-                }
+void sortChar(){
+    char str[1024];
+    gets(str);
+    int mark[26] = {0};
+    char *ptr;
+    while(*ptr != '\0') {
+        for (int i = 0; i < 26; ++i) {
+            if(*ptr - 'a' == i) {
+                mark[i] = 1;
             }
-        }else {
-            str[len] = '\0';
-            break;
+            if(*ptr - 'A' == i && mark[i] != 1) {
+                mark[i] = 2;
+            }
         }
-        str[len++] = c;
+        ptr++;
     }
-    str[len] = '\0';
-    printf("%s ", str);
+    for (int i = 0; i < 26; ++i) {
+        if(mark[i] == 1) {
+            printf("%c", 'A' + i);
+        }else if(mark[i] == 2) {
+            printf("%c", 'a' + i);
+        }
+    }
 }
+//void sortChar() {
+//    char str[1025];
+//    char c = 'a';
+//    int len = 0;
+//    printf("输入一段字符串,以'#'结束");
+//    for(int i = 0; len < 1024; i++) {
+//        scanf("%c", &c);
+//        if(c != '#') {
+//            for (int j = 0; j < len; ++j) {
+//                if(str[j] == c) {
+//                    continue;
+//                }
+//            }
+//        }else {
+//            str[len] = '\0';
+//            break;
+//        }
+//        for (int j = len - 1; j >= 1 ; ++j) {
+//            if(str[len] )
+//        }
+//        str[len++] = c;
+//    }
+//    str[len] = '\0';
+//    printf("%s ", str);
+//}
 
 
 

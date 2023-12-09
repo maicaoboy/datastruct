@@ -42,7 +42,7 @@ int DFS(ALGraph G, VertexType v) {
     while(nextArc != NULL) {
         if(visited[nextArc->adjvex] == red) {
             return 1;
-        }else {
+        }else if(visited[nextArc->adjvex] == white){
             if(DFS(G, nextArc->adjvex)) {
                 return 1;
             }
@@ -51,6 +51,7 @@ int DFS(ALGraph G, VertexType v) {
     }
     len--;
     visited[v] = black;
+    return 0;
 }
 
 void printPath(VertexType path[], int len) {
