@@ -67,6 +67,13 @@ int main() {
     printf("\n*************** 测试2 *********************\n");
     shortestPathK(G, 1, 8, 4);
 
+
+    /**
+     * 测试2
+     */
+    printf("\n*************** 测试3 *********************\n");
+    allPathLengthK(G, 4, 3);
+
     freeGraph_ALGraph(G);
 
 

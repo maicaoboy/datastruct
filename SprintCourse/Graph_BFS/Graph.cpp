@@ -883,6 +883,101 @@ void shortestPathK(ALGraph G, VertexType v, VertexType w, int k) {
 
 
 
+void printAllPathK(QElemType queue[MAX_VERTEX_NUM], int length, int k) {
+    VertexType path[MAX_VERTEX_NUM];
+    int index = 0;
+    for (int i = 1; i < length; ++i) {
+        index = 0;
+        if(queue[i].level == k) {
+            int ptr = i;
+            do{
+                path[index++] = queue[ptr].v;
+                ptr = queue[ptr].index;
+            }while(ptr != -1);
+            printf("path:");
+            for (int j = index - 1; j >= 0; --j) {
+                printf("%d ", path[j]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+
+
+/**
+ * 问题描述:求从顶点v出发长度为K的所有最短路径
+ * 算法思想:使用BFS遍历图,使用队列保存路径,在遍历每一层节点时,暂时不将下一层节点入队,而是在本层节点遍历完后才入队
+ * @param G
+ * @param k
+ */
+
+#define MAX_SIZE 100
+void allPathLengthK(ALGraph G, VertexType v, int k) {
+    int visited[MAX_SIZE] = {0};
+    QElemType queue[MAX_SIZE];
+    int length = 0;
+    int index = 0;
+
+    queue[length].v = v;
+    queue[length].level = 1;
+    queue[length].index = -1;   //-1代表出发节点
+    visited[v] = 1;
+    length++;
+
+    int preLevel = 1;
+    while(index < length) {
+        QElemType nextQueue[MAX_SIZE];
+        int nextLength = 0;
+        preLevel = queue[index].level;
+        while(index < length && preLevel == queue[index].level) {           //保存下一层所有邻接节点
+            ArcNode *nextArc = G.vertices[queue[index].v].firstarc;
+            while(nextArc != NULL) {
+                if(!visited[nextArc->adjvex]) {
+                    nextQueue[nextLength].v = nextArc->adjvex;
+                    nextQueue[nextLength].level = queue[index].level +1;
+                    nextQueue[nextLength].index = index;
+                    nextLength++;
+                }
+                nextArc = nextArc->nextarc;
+            }
+            preLevel = queue[index].level;
+            index++;
+        }
+        for (int i = 0; i < nextLength; ++i){                               //将下一层入队
+            queue[length].v = nextQueue[i].v;
+            queue[length].level = nextQueue[i].level;
+            queue[length].index = nextQueue[i].index;
+            length++;
+            visited[nextQueue[i].v] = 1;
+        }
+
+    }
+
+    for (int i = 1; i <= G.vexnum; ++i){        //处理非联通节点
+        if(!visited[i]) {
+            queue[length].v = i;
+            queue[length].index = -1;
+            queue[length].level = -1;
+            length++;
+        }
+    }
+    printAllPathK(queue, length, k);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
