@@ -882,7 +882,12 @@ void shortestPathK(ALGraph G, VertexType v, VertexType w, int k) {
 
 
 
-
+/**
+ * 打印所有长度为k的最短路径
+ * @param queue
+ * @param length
+ * @param k
+ */
 void printAllPathK(QElemType queue[MAX_VERTEX_NUM], int length, int k) {
     VertexType path[MAX_VERTEX_NUM];
     int index = 0;
@@ -907,11 +912,10 @@ void printAllPathK(QElemType queue[MAX_VERTEX_NUM], int length, int k) {
 
 /**
  * 问题描述:求从顶点v出发长度为K的所有最短路径
- * 算法思想:使用BFS遍历图,使用队列保存路径,在遍历每一层节点时,暂时不将下一层节点入队,而是在本层节点遍历完后才入队
+ * 算法思想:使用BFS遍历图,使用队列保存路径,在遍历每一层节点时,暂时不将下一层节点入队,而是在本层节点遍历完后才全部入队
  * @param G
  * @param k
  */
-
 #define MAX_SIZE 100
 void allPathLengthK(ALGraph G, VertexType v, int k) {
     int visited[MAX_SIZE] = {0};
