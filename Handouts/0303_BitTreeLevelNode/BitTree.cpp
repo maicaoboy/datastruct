@@ -611,9 +611,8 @@ int maxWidth(BitTree T) {
     EnQueue(&Q, levelNode);
 
     int prelevel = 0;
-    BitNodeLevel *preLevelNode = NULL;
     int max = 0;
-    int count = 0;
+    int count = 1;
     BitNodeLevel *node;
 
     while(!QueueEmpty(Q)) {

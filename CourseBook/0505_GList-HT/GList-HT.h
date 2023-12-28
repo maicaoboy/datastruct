@@ -35,8 +35,19 @@ typedef struct GLNode {
             struct GLNode* tp;  // 指向表尾
         } ptr;                  // 表结点的指针域
     } Node;
-} GLNode; 
+} GLNode;
 
+//typedef enum {Atom, List} ElemTag;
+//
+//typedef struct GNode {
+//    ElemTag tag;
+//    union {
+//        AtomType atom;
+//        struct GNode *hp;
+//        struct GNode *tp;
+//    } ptr;
+//}GNode, GList;
+//
 /* 广义表类型 */
 typedef GLNode* GList;
 

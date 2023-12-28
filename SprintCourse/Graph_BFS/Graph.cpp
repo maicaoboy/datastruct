@@ -529,6 +529,7 @@ VertexType topologyStack[MAX_VERTEX_NUM];
 int topologyLength = 0;
 /**
  * 例题 11(辅助函数)、设计算法对有向无环图 G 进行拓扑排序。
+ * 将标记数组添加正在访问状态,当访问到正在访问的节点即有环
  * @param G
  * @param v
  */
@@ -758,7 +759,7 @@ void printShortestPath(QElemType *queue, int vexnum) {
     }
 }
 
-//使用DFS计算有向图G从顶点v出发到各个顶点的最短路径
+//使用BFS计算有向图G从顶点v出发到各个顶点的最短路径
 void shortestPath(ALGraph G, VertexType v) {
     QElemType queue[MAX_VERTEX_NUM];
     int qLength = 1;
